@@ -1,6 +1,6 @@
 # **Generador de usuarios en CSV**
 
-Script en Python que lee una lista de empleados nuevos desde un archivo JSON y genera un CSV con el nombre de usuario, una contraseña inicial aleatoria y el correo corporativo de cada uno.
+Script en Python que lee una lista de empleados nuevos desde un archivo JSON y genera un CSV con el nombre, apellidos, nombre de usuario, una contraseña inicial aleatoria y el correo corporativo de cada uno.
 
 Estado: Terminado.
 
@@ -25,8 +25,9 @@ El repositorio incluye `employees_list.json`, un ejemplo con empleados inventado
 
 Para ejecutarlo en la terminal de Linux o en Windows, simplemente hay que añadir el nombre del archivo json y el nombre del archivo csv que se quiere crear. Importante recordar que el archivo json debe existir en la carpeta antes de ejecutar el script, de lo contrario lanzará un error. 
 
-**Comando en Linux**: ***`./csv_users_generator.py employees_list.json users.csv`***
-**Comando en Windows**: ***`python3 csv_users_generator.py employees_list.json users.csv`***
+**Comando en Linux**: ***`./csv_users_generator.py employees_list.json users.csv`**
+
+**Comando en Windows**: ***`python3 csv_users_generator.py employees_list.json users.csv`**
 
 ## **Resultado**
 
@@ -35,6 +36,7 @@ Se crea CSV_Files/users.csv.
 Ejemplo del archivo creado users.csv:
 
 ```Name,Surname,sAMAccountName,Password,Email```
+
 ```laura,martínez ruiz,l.martinezruiz,BbdVXHmJsPt2G7vr,l.martinezruiz@empresa.com```
 
 
