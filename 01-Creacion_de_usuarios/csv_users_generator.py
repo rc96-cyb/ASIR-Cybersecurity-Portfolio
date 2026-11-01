@@ -2,6 +2,7 @@ import os
 import json
 import csv
 from unidecode import unidecode
+import sys
 import secrets
 import string
 
@@ -62,5 +63,12 @@ def new_users(file,csvfile):
             data.writerow({'Name':name,'Surname':surname,'sAMAccountName':username,'Password':passwd,'Email':email}) 
 
     return f'{total} new employees have been added to {csvfile}.'
-
-print(new_users('employees_list.json','users.csv'))
+    
+if  __name__ == '__main__':
+    if len(sys.argv) == 3:
+            json_file = sys.argv[1] 
+            csv_file = sys.argv[2]
+    else:
+        json_file = 'employees_list.json'
+        csv_file = 'users.csv'  
+print(new_users(json_file,csv_file))
