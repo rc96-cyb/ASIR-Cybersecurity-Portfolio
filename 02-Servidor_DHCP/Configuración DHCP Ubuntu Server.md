@@ -41,7 +41,7 @@ Debemos también indicar el servidor de dominio y la IP pública que va a utiliz
 En la tarjeta enp0s8 hay que indicar las IPs que van a actuar como puerta de enlace y que van a utilizar los dispositivos que forman parte de la red interna. Estas IPs también deberán indicarse en el archivo dhcpd.conf en el pool correspondiente. 
 
 
-!\[Configuración archivo YAML](./Capturas_DHCP/01-Archivo_yaml.png)
+![Configuración archivo YAML](./Capturas_DHCP/01-Archivo_yaml.png)
 
 
 ### **2. Configuración del archivo dhcpd.conf**
@@ -53,13 +53,13 @@ En este caso, hay 2 IPs estáticas que corresponden a unos dispositivos que se p
 
 Las IPs se entregan con licencias de duración limitada. Si el cliente se mantiene encendido o activo en la red, pide de forma automática al servidor la renovación de la licencia antes de que esta caduque. Si el cliente se desconecta de la red, la licencia caduca y la IP vuelve al pool. El max-lease-time indica el tiempo máximo por concesión, si el cliente necesita más deberá solicitar la renovación. 
 
-!\[Configuración archivo dhcpd.conf](./Capturas_DHCP/02-Archivo_dhcpConf.png)
+![Configuración archivo dhcpd.conf](./Capturas_DHCP/02-Archivo_dhcpConf.png)
 
 
 ### **3. Comprobación de que funciona el servidor - Troubleshooting**
 
 
-!\[Comprobación del servidor](./Capturas_DHCP/03-Comprobacion_servidor.png)
+![Comprobación del servidor](./Capturas_DHCP/03-Comprobacion_servidor.png)
 
 Tuve un problema con este paso porque se me olvidó activar el segundo adaptador en la configuración de la máquina virtual. 
 
@@ -69,11 +69,11 @@ Para intentar solucionarlo, primero comprobé que reconociera las dos tarjetas d
 
 Sin el adaptador 2 no existía enp0s8, así que ninguna interfaz del servidor tenía una IP dentro de las subredes declaradas en dhcpd.conf. El servicio no tenía dónde escuchar y terminó con error.
 
-!\[Troubleshooting](./Capturas_DHCP/04-troubleshooting.png)
+![Troubleshooting](./Capturas_DHCP/04-troubleshooting.png)
 
-!\[Netplan Status](./Capturas_DHCP/05-netplan_status.png)
+![Netplan Status](./Capturas_DHCP/05-netplan_status.png)
 
-!\[IP a](./Capturas_DHCP/06-ip_a.png)
+![IP a](./Capturas_DHCP/06-ip_a.png)
 
 Utilicé el comando ***`netplan status`*** porque este comando muestra el estado actual de las interfaces de red del sistema, y me sirvió para detectar que no estaba reconociendo la segunda interfaz (enp0s8). El comando ***`ip a`*** me muestra la información de red de cada interfaz, esto confirmó que ambas interfaces funcionaban perfectamente y tenían asignadas IPs correctas. 
 
@@ -82,8 +82,8 @@ Utilicé el comando ***`netplan status`*** porque este comando muestra el estado
 
 El cliente se conecta a la red interna y recibe de forma automática la IP dentro del rango especificado. El servidor asigna las IPs del rango que pertenezca a la subred por la que recibe la petición. Como la MAC del cliente es diferente a las 2 especificadas en el documento dhcpd.conf, no se asignará ninguna de las IPs fijas, sino que se asignará la primera disponible del rango del pool correspondiente. En este caso se asignó la 172.16.0.100/24.
 
-!\[Cliente IP](./Capturas_DHCP/07-cliente_IP.png)
+![Cliente IP](./Capturas_DHCP/07-cliente_IP.png)
 
 Utilizando el comando ***`dhcp-lease-list`*** podemos comprobar que se ha hecho la concesión de IP correctamente y podemos también comprobar cuántos dispositivos han sido concedidos una IP y cuándo caduca cada concesión. 
 
-!\[dhcp\_leaselist](./Capturas_DHCP/08-dhcp-lease-list.png)
+![dhcp\_leaselist](./Capturas_DHCP/08-dhcp-lease-list.png)
