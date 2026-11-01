@@ -36,34 +36,34 @@ def new_users(file,csvfile):
     except FileNotFoundError as fnf_error:
         print(fnf_error,'Explanation: Could not find json file.')
         
-        with open(csvfile,'w',newline='',encoding='utf-8') as f:
-            data = csv.DictWriter(f,fieldnames = h)
-            data.writeheader()
-            my_count = {}
+    with open(csvfile,'w',newline='',encoding='utf-8') as f:
+        data = csv.DictWriter(f,fieldnames = h)
+        data.writeheader()
+        my_count = {}
         
     #### Create variables for names and last names to add them to the csv file.
-            for n in full_names:
-                sep = n.split('/')
-                name = sep[0].strip()
-                surname = sep[1].strip()                
+        for n in full_names:
+            sep = n.split('/')
+            name = sep[0].strip()
+            surname = sep[1].strip()                
     #### Usernames.
-                username_join = name[0] +'.' + surname.replace(' ','').replace("'",'')
-                username = unidecode(username_join)
+            username_join = name[0] +'.' + surname.replace(' ','').replace("'",'')
+            username = unidecode(username_join)
     #### Check if any username is duplicated.
-                if username not in my_count:
-                    my_count[username] = 0
-                else:
-                    my_count[username] += 1
-                    username = f'{username}{my_count[username]}'
+            if username not in my_count:
+                my_count[username] = 0
+            else:
+                my_count[username] += 1
+                username = f'{username}{my_count[username]}'
     #### Generate secure random passwords using 'secrets' module.
-                char = string.ascii_letters + string.digits
-                length = 16
-                passwd = ''.join(secrets.choice(char) for i in range(length))
+            char = string.ascii_letters + string.digits
+            length = 16
+            passwd = ''.join(secrets.choice(char) for i in range(length))
     #### Generate corporate emails.
-                email = username + email_ext
+            email = username + email_ext
     
     #### Add data to csv file.
-                data.writerow({'Name':name,'Surname':surname,'sAMAccountName':username,'Password':passwd,'Email':email}) 
+            data.writerow({'Name':name,'Surname':surname,'sAMAccountName':username,'Password':passwd,'Email':email}) 
 
     return f'{total} new employees have been added to {csvfile}.'
     
