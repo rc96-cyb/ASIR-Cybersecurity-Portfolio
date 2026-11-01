@@ -25,9 +25,9 @@ El repositorio incluye `employees_list.json`, un ejemplo con empleados inventado
 
 Para ejecutarlo en la terminal de Linux o en Windows, simplemente hay que añadir el nombre del archivo json y el nombre del archivo csv que se quiere crear. Importante recordar que el archivo json debe existir en la carpeta antes de ejecutar el script, de lo contrario lanzará un error. 
 
-**Comando en Linux**: ***`./csv_users_generator.py employees_list.json users.csv`**
+**Comando en Linux**: **`./csv_users_generator.py employees_list.json users.csv`**
 
-**Comando en Windows**: ***`python3 csv_users_generator.py employees_list.json users.csv`**
+**Comando en Windows**: **`python3 csv_users_generator.py employees_list.json users.csv`**
 
 ## **Resultado**
 
