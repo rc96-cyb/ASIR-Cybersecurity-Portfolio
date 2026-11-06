@@ -41,7 +41,7 @@ Hice algunas comprobaciones básicas para asegurarme de que estaba en la máquin
 
 ### **Implementación de medidas básicas de seguridad**
 
-Quería cambiar el puerto de conexión ssh para no utilizar el que viene por defecto que puede ser demasiado obvio para los atacantes. Para ello, actualicé el archivo sshd_config y cambié el puerto de conexión del 22 a 2222 y también denegué el permiso de conexión con root.  
+Quería cambiar el puerto de conexión ssh para no utilizar el que viene por defecto. Para ello, actualicé el archivo sshd_config y cambié el puerto de conexión del 22 a 2222 y también denegué el permiso de conexión con root.  
 
 ![Cambio de puerto](./Capturas/08-cambio_puerto2222.png)
 
