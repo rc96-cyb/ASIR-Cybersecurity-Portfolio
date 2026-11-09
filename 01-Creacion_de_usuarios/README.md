@@ -40,7 +40,7 @@ Ejemplo del archivo creado users.csv:
 
 ## **Cómo funciona y decisiones tomadas**
 
-- **Nombre de usuario**: inicial del nombre + . + apellidos, en minúsculas, sin espacios, sin apóstrofos y sin tildes. 
+- **Nombre de usuario**: inicial del nombre + . + apellidos, en minúsculas, sin espacios, sin tildes. 
 - **Duplicados**: si dos personas generan el mismo usuario, a la segunda se le añade un número (p.sanzdiaz, p.sanzdiaz1).
 - **Contraseñas**: 16 caracteres (letras y dígitos) generados con el módulo secrets, pensado para uso criptográfico. No se usa random porque sus valores son predecibles.
 - **Correo**: usuario + @empresa.com. El dominio se cambia en la variable email_ext del script.
